@@ -5,29 +5,25 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
 
-export default function MultiActionAreaCard({ numOfRicette }) {
+export default function MultiActionAreaCard({ ricetta }) {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345 }} key={ricetta.id}>
       <CardActionArea>
         <CardMedia
           component="img"
           height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
+          image={ricetta.image}
           alt="green iguana"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Lizard
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+            {ricetta.title}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
         <Button variant="contained" size="small" color="primary">
-          Scopri
+          Scopri di più
         </Button>
       </CardActions>
     </Card>
