@@ -20,7 +20,7 @@ const MEMO_URL =
 
 export const fetchRicette = createAsyncThunk(
   "ricette/fetchRicette",
-  async () => {
+  async (res) => {
     try {
       const response = await axios.get(MEMO_URL);
       return response.data;
