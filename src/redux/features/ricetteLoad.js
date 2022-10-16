@@ -23,7 +23,9 @@ export const fetchRicette = createAsyncThunk(
   async () => {
     try {
       const response = await axios.get(MEMO_URL);
-      return response.data;
+      console.log(response.data.results);
+
+      return response.data.results;
     } catch (err) {
       return err.message;
     }
