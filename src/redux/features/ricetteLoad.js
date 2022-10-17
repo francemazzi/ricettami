@@ -5,7 +5,6 @@ import axios from "axios";
 
 const initialState = {
   ricette: [],
-  nomeRicetta: "",
   memoUrl: "",
   loading: "load",
   error: "",
@@ -16,8 +15,8 @@ const initialState = {
 
 export const fetchRicette = createAsyncThunk(
   "ricette/fetchRicette",
-  async () => {
-    const nameRicetta = "pizza";
+  async (ric) => {
+    const nameRicetta = ric;
     try {
       const response = await ricetteApi.get(
         `complexSearch?apiKey=89534fc4705648859ad31b5faca5c398&query=${nameRicetta}`
@@ -37,15 +36,6 @@ const ricetteSlice = createSlice({
       reducer(state, action) {
         state.ricette.push(action.payload);
       },
-    },
-    filterRicette: (state, action) => {
-      state.nomeRicetta = action.payload;
-
-      console.log(action.payload);
-
-      // state.ricette = state.ricette.filter((ricetta) =>
-      //   ricetta.title.toLowerCase().includes(action.payload)
-      // );
     },
   },
   extraReducers: {
@@ -71,4 +61,4 @@ export const getRecepiesLoading = (state) => state.ricetta.loading;
 export const getRecepiesError = (state) => state.ricetta.error;
 
 export default ricetteSlice.reducer;
-export const { ricettaAdd, filterRicette } = ricetteSlice.actions;
+export const { ricettaAdd } = ricetteSlice.actions;

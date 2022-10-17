@@ -1,7 +1,7 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import { filterRicette } from "../../redux/features/ricetteLoad";
+import { fetchRicette } from "../../redux/features/ricetteLoad";
 import { useDispatch } from "react-redux";
 import { useRef, useState } from "react";
 import Button from "@mui/material/Button";
@@ -12,9 +12,10 @@ const Ricerca = () => {
   const [ric, setRic] = useState("");
 
   const filterText = (e) => setRic(e.target.value);
-  const filter = () => {
+  const filter = (e) => {
     // dispatch(filterRicette(inputRef.current.value));
-    dispatch(filterRicette(ric));
+    e.preventDefault();
+    dispatch(fetchRicette(ric));
     setRic("");
   };
 
