@@ -3,28 +3,18 @@ import axios from "axios";
 
 const initialState = {
   ricette: [],
-  loading: false,
+  loading: "load",
   error: "",
 };
 
 const MEMO_URL =
   "https://api.spoonacular.com/recipes/complexSearch?query=pasta&apiKey=89534fc4705648859ad31b5faca5c398";
 
-// export const fetchRicette = createAsyncThunk("ricette/fetchRicette", () => {
-//   return axios
-//     .get(
-//       "https://api.spoonacular.com/recipes/complexSearch?query=pasta&apiKey=89534fc4705648859ad31b5faca5c398"
-//     )
-//     .then((response) => response.data);
-// });
-
 export const fetchRicette = createAsyncThunk(
   "ricette/fetchRicette",
   async () => {
     try {
       const response = await axios.get(MEMO_URL);
-      console.log(response.data.results);
-
       return response.data.results;
     } catch (err) {
       return err.message;
@@ -42,21 +32,21 @@ const ricetteSlice = createSlice({
       },
     },
   },
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchRicette.pending, (state) => {
-        state.loading = true;
-      })
-      .addCase(fetchRicette.fulfilled, (state, action) => {
-        state.loading = false;
-        //   state.ricette = action.payload;
-        //   state.error = "";
-      })
-      .addCase(fetchRicette.rejected, (state, action) => {
-        state.loading = false;
-        state.ricette = [];
-        state.error = action.error.message;
-      });
+  extraReducers: {
+    [fetchRicette.pending]: (state) => {
+      state.loading = "load";
+    },
+    [fetchRicette.fulfilled]: (state, action) => {
+      state.loading = "Success";
+      state.ricette = action.payload;
+    },
+    [fetchRicette.fulfilled]: (state, action) => {
+      state.loading = "Success";
+      state.ricette = action.payload;
+    },
+    [fetchRicette.rejected]: (state) => {
+      state.loading = "Failed";
+    },
   },
 });
 
