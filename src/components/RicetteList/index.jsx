@@ -20,7 +20,21 @@ const RicettaList = () => {
     <RicettaCard key={ricetta.id} ricetta={ricetta} />
   ));
 
-  return <>{content}</>;
+  return (
+    <>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          flexWrap: "wrap",
+          alignItems: "center",
+          justifyContent: "space-around",
+        }}
+      >
+        {content}
+      </div>
+    </>
+  );
 };
 
 export default RicettaList;

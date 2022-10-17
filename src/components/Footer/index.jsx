@@ -9,7 +9,7 @@ export default function FooterFavorites() {
   const [value, setValue] = React.useState(0);
 
   return (
-    <Box sx={{ width: 500 }} style={{ marginTop: "2rem" }}>
+    <Box sx={{ width: 500 }} style={{ marginTop: "2rem", width: "100%" }}>
       <BottomNavigation
         showLabels
         value={value}
