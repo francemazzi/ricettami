@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { useSelector } from "react-redux";
 import ricetteApi from "../ricetteApi";
 import axios from "axios";
 
@@ -11,7 +10,10 @@ const initialState = {
 };
 
 // To do
-//rendere dimanima la varaizione di nameRicetta con nomeRicetta
+//pagian privata con specifica della ricetta
+//salvare ricette preferite
+//salvare ricette viste di recente
+//carosello ricette preferite
 
 export const fetchRicette = createAsyncThunk(
   "ricette/fetchRicette",
