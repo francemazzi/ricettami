@@ -7,7 +7,11 @@ import { Button, CardActionArea, CardActions } from "@mui/material";
 
 const RicettaCard = ({ ricetta }) => {
   return (
-    <Card sx={{ maxWidth: 345 }} key={ricetta.id} style={{ margin: "20px" }}>
+    <Card
+      sx={{ maxWidth: 345 }}
+      key={ricetta.id}
+      style={{ margin: "20px", height: "18.25rem", width: "18.42rem" }}
+    >
       <CardActionArea>
         <CardMedia
           component="img"

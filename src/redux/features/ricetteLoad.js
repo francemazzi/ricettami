@@ -1,22 +1,27 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { useSelector } from "react-redux";
+import ricetteApi from "../ricetteApi";
 import axios from "axios";
 
 const initialState = {
   ricette: [],
   nomeRicetta: "",
+  memoUrl: "",
   loading: "load",
   error: "",
 };
 
-const nameRicetta = "pizza";
-
-const MEMO_URL = `https://api.spoonacular.com/recipes/complexSearch?query=${nameRicetta}&apiKey=89534fc4705648859ad31b5faca5c398`;
+// To do
+//rendere dimanima la varaizione di nameRicetta con nomeRicetta
 
 export const fetchRicette = createAsyncThunk(
   "ricette/fetchRicette",
   async () => {
+    const nameRicetta = "pizza";
     try {
-      const response = await axios.get(MEMO_URL);
+      const response = await ricetteApi.get(
+        `complexSearch?apiKey=89534fc4705648859ad31b5faca5c398&query=${nameRicetta}`
+      );
       return response.data.results;
     } catch (err) {
       return err.message;
