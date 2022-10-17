@@ -4,6 +4,8 @@ import Stack from "@mui/material/Stack";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
+import Box from "@mui/material/Box";
+
 // import MenuIcon from "@mui/icons-material/Menu";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Ricerca from "../Ricerca";
@@ -17,7 +19,6 @@ function appBarLabel(label) {
       <Typography variant="h5" noWrap component="div" sx={{ flexGrow: 1 }}>
         {label}
       </Typography>
-      <Ricerca />
     </Toolbar>
   );
 }
@@ -39,6 +40,19 @@ export default function EnableColorOnDarkAppBar() {
           {appBarLabel("🍋 Ricettami")}
         </AppBar>
       </ThemeProvider>
+      <Box
+        sx={{
+          width: "100%",
+        }}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          width: "100%",
+        }}
+      >
+        <Ricerca />
+      </Box>
     </Stack>
   );
 }

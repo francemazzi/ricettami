@@ -3,12 +3,14 @@ import axios from "axios";
 
 const initialState = {
   ricette: [],
+  nomeRicetta: "",
   loading: "load",
   error: "",
 };
 
-const MEMO_URL =
-  "https://api.spoonacular.com/recipes/complexSearch?query=pasta&apiKey=89534fc4705648859ad31b5faca5c398";
+const nameRicetta = "pizza";
+
+const MEMO_URL = `https://api.spoonacular.com/recipes/complexSearch?query=${nameRicetta}&apiKey=89534fc4705648859ad31b5faca5c398`;
 
 export const fetchRicette = createAsyncThunk(
   "ricette/fetchRicette",
@@ -30,6 +32,15 @@ const ricetteSlice = createSlice({
       reducer(state, action) {
         state.ricette.push(action.payload);
       },
+    },
+    filterRicette: (state, action) => {
+      state.nomeRicetta = action.payload;
+
+      console.log(action.payload);
+
+      // state.ricette = state.ricette.filter((ricetta) =>
+      //   ricetta.title.toLowerCase().includes(action.payload)
+      // );
     },
   },
   extraReducers: {
@@ -55,4 +66,4 @@ export const getRecepiesLoading = (state) => state.ricetta.loading;
 export const getRecepiesError = (state) => state.ricetta.error;
 
 export default ricetteSlice.reducer;
-export const { ricettaAdd } = ricetteSlice.actions;
+export const { ricettaAdd, filterRicette } = ricetteSlice.actions;

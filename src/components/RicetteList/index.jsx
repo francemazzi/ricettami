@@ -11,7 +11,6 @@ import { useEffect } from "react";
 const RicettaList = () => {
   const dispatch = useDispatch();
   const numOfRicette = useSelector((state) => state.ricetta.ricette);
-  console.log(numOfRicette);
 
   useEffect(() => {
     dispatch(fetchRicette());
